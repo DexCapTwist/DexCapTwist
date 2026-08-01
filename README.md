@@ -17,6 +17,6 @@ Then open `http://localhost:8000`.
 - `assets/js/main.js` — mobile navigation and scroll reveals
 - `assets/images/` — web-optimized paper figures
 - `assets/paper/` — compressed manuscript PDF
-- `video/` — experiment media
+- `video/` — web-ready simulation and real-world experiment videos
 
 The paper remains anonymized to match the current IEEE TASE manuscript.

@@ -44,11 +44,10 @@
           <h1>Dex<span>Cap</span>Twist</h1>
           <p class="subtitle">Synthetic Asset Generation with Hybrid Primitive Control for Dexterous Screw-Cap Manipulation</p>
           <p class="lead">A unified framework that pairs 4,015 simulation-ready articulated bottles with an explicit twist–reset controller for stable, long-horizon bimanual unscrewing.</p>
-          <p class="authors">Anonymous Author(s) · IEEE TASE submission</p>
           <div class="button-row" aria-label="Project links">
             <a class="button primary" href="assets/paper/dexcaptwist-paper.pdf">Read the paper <span>↗</span></a>
             <a class="button" href="https://github.com/DexCapTwist/DexCapTwist">GitHub <span>↗</span></a>
-            <a class="button" href="#video">Watch rollout <span>↓</span></a>
+            <a class="button" href="#video">Watch videos <span>↓</span></a>
           </div>
         </div>
         <aside class="hero-card reveal" aria-label="Project highlights">
@@ -157,17 +156,31 @@
     </section>
 
     <section class="section-pad video-section" id="video">
-      <div class="container video-layout">
+      <div class="container">
         <div class="section-heading reveal">
-          <p class="kicker">04 · Rollout</p>
-          <h2>Contact-rich twisting in simulation.</h2>
-          <p>The right LEAP Hand twists the cap while the left hand stabilizes the bottle body. Explicit recovery allows multiple cycles within one episode.</p>
+          <p class="kicker">04 · Experiments</p>
+          <h2>From simulation to the real world.</h2>
+          <p>The right dexterous hand twists the cap while the left hand stabilizes the bottle body. Explicit recovery enables repeated twist–reset cycles in both domains.</p>
         </div>
-        <div class="video-frame reveal">
-          <video controls loop muted playsinline preload="metadata" poster="assets/images/simulation.webp">
-            <source src="video/simulation-rollout.mp4" type="video/mp4">
-            Your browser does not support embedded video.
-          </video>
+        <div class="video-grid">
+          <article class="video-card reveal">
+            <div class="video-frame">
+              <video controls muted playsinline preload="metadata" poster="assets/images/simulation.webp">
+                <source src="video/simulation-web.mp4" type="video/mp4">
+                Your browser does not support embedded video.
+              </video>
+            </div>
+            <div class="video-caption"><span>Simulation</span><strong>Isaac Lab evaluation</strong><p>Representative contact-rich twisting and hand-reset cycles across synthetic bottles.</p></div>
+          </article>
+          <article class="video-card reveal">
+            <div class="video-frame">
+              <video controls playsinline preload="metadata" poster="assets/images/real-world.webp">
+                <source src="video/real-web.mp4" type="video/mp4">
+                Your browser does not support embedded video.
+              </video>
+            </div>
+            <div class="video-caption"><span>Real world</span><strong>Zero-shot robot deployment</strong><p>Physical bimanual cap manipulation on everyday containers without real-world fine-tuning.</p></div>
+          </article>
         </div>
       </div>
     </section>
@@ -233,7 +246,8 @@
         <div class="resource-list">
           <a href="assets/paper/dexcaptwist-paper.pdf"><span>PDF</span><strong>Paper manuscript</strong><small>Compressed web copy · 1.1 MB</small></a>
           <a href="https://github.com/DexCapTwist/DexCapTwist"><span>GH</span><strong>Project repository</strong><small>Website and future releases</small></a>
-          <a href="video/simulation-rollout.mp4"><span>MP4</span><strong>Simulation rollout</strong><small>Embedded experiment clip</small></a>
+          <a href="video/simulation-web.mp4"><span>SIM</span><strong>Simulation experiment</strong><small>Isaac Lab evaluation video</small></a>
+          <a href="video/real-web.mp4"><span>REAL</span><strong>Real-world experiment</strong><small>Zero-shot physical deployment video</small></a>
         </div>
       </div>
     </section>
@@ -242,7 +256,7 @@
   <footer class="site-footer">
     <div class="container footer-row">
       <span>DexCapTwist · 2026</span>
-      <span>Anonymous IEEE TASE submission</span>
+      <span>Dexterous screw-cap manipulation</span>
       <a href="#top">Back to top ↑</a>
     </div>
   </footer>
