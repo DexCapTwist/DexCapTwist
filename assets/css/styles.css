@@ -48,14 +48,12 @@ button { font: inherit; }
 .brand, .nav-links { display: flex; align-items: center; }
 .brand { gap: 11px; font-weight: 700; letter-spacing: -.02em; }
 .brand-mark {
-  width: 40px;
-  height: 36px;
-  display: grid;
-  place-items: center;
-  border-radius: 9px 9px 15px 15px;
-  color: #fff;
-  background: var(--navy);
-  font: 700 .75rem/1 var(--mono);
+  width: 42px;
+  height: 42px;
+  display: block;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 8px 18px rgba(20, 47, 73, .14);
 }
 .nav-links { gap: 3px; }
 .nav-links a {
