@@ -52,7 +52,7 @@ button { font: inherit; }
   height: 42px;
   display: block;
   border-radius: 10px;
-  object-fit: cover;
+  object-fit: contain;
   box-shadow: 0 8px 18px rgba(20, 47, 73, .14);
 }
 .nav-links { gap: 3px; }
