@@ -217,18 +217,18 @@ figcaption { padding: 8px 18px 16px; color: var(--muted); font-size: .84rem; tex
 .node-label { color: var(--orange); font: 700 .71rem/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
 .flow-arrow { align-self: center; color: var(--orange); font: 400 1.6rem/1 var(--mono); }
 
-.video-section { background: linear-gradient(135deg, #dbeae6, #eef0e7); }
-.video-section .section-heading { max-width: 720px; }
-.video-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
-.video-card { overflow: hidden; border: 1px solid rgba(16, 27, 36, .16); border-radius: 20px; background: rgba(255, 254, 249, .72); box-shadow: var(--shadow); }
 .video-frame { overflow: hidden; border: 8px solid var(--ink); border-radius: 20px; background: #080c0f; box-shadow: var(--shadow); }
 .video-frame video { width: 100%; aspect-ratio: 16 / 9; object-fit: contain; }
-.video-card .video-frame { border-width: 6px; border-radius: 18px 18px 0 0; box-shadow: none; }
+.module-video { margin: 0 0 28px; overflow: hidden; border: 1px solid var(--line); border-radius: 20px; background: var(--panel); box-shadow: var(--shadow); scroll-margin-top: 92px; }
+.module-video .video-frame { border-width: 6px; border-radius: 18px 18px 0 0; box-shadow: none; }
 .video-caption { padding: 20px 22px 22px; }
 .video-caption span, .video-caption strong { display: block; }
 .video-caption span { color: var(--orange); font: 700 .71rem/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
 .video-caption strong { margin-top: 9px; font-size: 1.12rem; }
 .video-caption p { margin: 7px 0 0; color: var(--muted); font-size: .92rem; }
+.dark-video { border-color: #34434d; background: #172630; }
+.dark-video .video-caption strong { color: #fff; }
+.dark-video .video-caption p { color: #9dacb4; }
 
 .results-section { background: #fbfaf5; }
 .headline-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
@@ -295,7 +295,6 @@ tr:last-child td { border-bottom: 0; }
   .feature-card { min-height: 0; }
   .pipeline { grid-template-columns: 1fr 1fr; }
   .dataset-bottom { grid-template-columns: 1fr; }
-  .video-grid { grid-template-columns: 1fr; }
   .cycle-flow { grid-template-columns: 1fr; }
   .flow-arrow { transform: rotate(90deg); justify-self: center; }
 }

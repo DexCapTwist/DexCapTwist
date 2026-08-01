@@ -47,7 +47,7 @@
           <div class="button-row" aria-label="Project links">
             <a class="button primary" href="assets/paper/dexcaptwist-paper.pdf">Read the paper <span>↗</span></a>
             <a class="button" href="https://github.com/DexCapTwist/DexCapTwist">GitHub <span>↗</span></a>
-            <a class="button" href="#video">Watch videos <span>↓</span></a>
+            <a class="button" href="#simulation-video">Watch videos <span>↓</span></a>
           </div>
         </div>
         <aside class="hero-card reveal" aria-label="Project highlights">
@@ -155,43 +155,22 @@
       </div>
     </section>
 
-    <section class="section-pad video-section" id="video">
-      <div class="container">
-        <div class="section-heading reveal">
-          <p class="kicker">04 · Experiments</p>
-          <h2>From simulation to the real world.</h2>
-          <p>The right dexterous hand twists the cap while the left hand stabilizes the bottle body. Explicit recovery enables repeated twist–reset cycles in both domains.</p>
-        </div>
-        <div class="video-grid">
-          <article class="video-card reveal">
-            <div class="video-frame">
-              <video controls muted playsinline preload="metadata" poster="assets/images/simulation.webp">
-                <source src="video/simulation-web.mp4" type="video/mp4">
-                Your browser does not support embedded video.
-              </video>
-            </div>
-            <div class="video-caption"><span>Simulation</span><strong>Isaac Lab evaluation</strong><p>Representative contact-rich twisting and hand-reset cycles across synthetic bottles.</p></div>
-          </article>
-          <article class="video-card reveal">
-            <div class="video-frame">
-              <video controls playsinline preload="metadata" poster="assets/images/real-world.webp">
-                <source src="video/real-web.mp4" type="video/mp4">
-                Your browser does not support embedded video.
-              </video>
-            </div>
-            <div class="video-caption"><span>Real world</span><strong>Zero-shot robot deployment</strong><p>Physical bimanual cap manipulation on everyday containers without real-world fine-tuning.</p></div>
-          </article>
-        </div>
-      </div>
-    </section>
-
     <section class="section-pad results-section" id="results">
       <div class="container">
         <div class="section-heading reveal">
-          <p class="kicker">05 · Simulation Results</p>
+          <p class="kicker">04 · Simulation Results</p>
           <h2>More rotation across every geometry group.</h2>
           <p>All methods are evaluated for 200 steps on held-out Original, Interpolation, and Random subsets. CycleTwist achieves the strongest total rotation angle and twisting velocity throughout.</p>
         </div>
+        <article class="module-video reveal" id="simulation-video">
+          <div class="video-frame">
+            <video controls muted playsinline preload="metadata" poster="assets/images/simulation.webp">
+              <source src="video/simulation-web.mp4" type="video/mp4">
+              Your browser does not support embedded video.
+            </video>
+          </div>
+          <div class="video-caption"><span>Simulation</span><strong>Isaac Lab evaluation</strong><p>Representative contact-rich twisting and hand-reset cycles across synthetic bottle geometries.</p></div>
+        </article>
         <div class="headline-metrics reveal">
           <article><span>Original TRA</span><strong>202.7°</strong><small>+17.3% vs. best baseline</small></article>
           <article><span>Interpolation TRA</span><strong>210.1°</strong><small>+32.5% vs. best baseline</small></article>
@@ -223,9 +202,18 @@
     <section class="section-pad dark-section" id="real-world">
       <div class="container">
         <div class="real-heading reveal">
-          <div><p class="kicker">06 · Real World</p><h2>Zero-shot transfer.<br>No real-world fine-tuning.</h2></div>
+          <div><p class="kicker">05 · Real World</p><h2>Zero-shot transfer.<br>No real-world fine-tuning.</h2></div>
           <div class="real-score"><strong>78.5%</strong><span>157 / 200 successful trials</span></div>
         </div>
+        <article class="module-video dark-video reveal" id="real-video">
+          <div class="video-frame">
+            <video controls playsinline preload="metadata" poster="assets/images/real-world.webp">
+              <source src="video/real-web.mp4" type="video/mp4">
+              Your browser does not support embedded video.
+            </video>
+          </div>
+          <div class="video-caption"><span>Real world</span><strong>Zero-shot robot deployment</strong><p>Physical bimanual cap manipulation on everyday containers without real-world fine-tuning.</p></div>
+        </article>
         <figure class="paper-figure dark-figure reveal">
           <img src="assets/images/real-world.webp" alt="Real-world containers, perception outputs, and robot executions">
           <figcaption>Twenty objects across five categories, with RGB input, segmentation, contour recovery, and representative execution stages.</figcaption>
@@ -242,7 +230,7 @@
 
     <section class="section-pad resources" id="resources">
       <div class="container resource-grid reveal">
-        <div><p class="kicker">07 · Resources</p><h2>Paper, code,<br>and media.</h2></div>
+        <div><p class="kicker">06 · Resources</p><h2>Paper, code,<br>and media.</h2></div>
         <div class="resource-list">
           <a href="assets/paper/dexcaptwist-paper.pdf"><span>PDF</span><strong>Paper manuscript</strong><small>Compressed web copy · 1.1 MB</small></a>
           <a href="https://github.com/DexCapTwist/DexCapTwist"><span>GH</span><strong>Project repository</strong><small>Website and future releases</small></a>
