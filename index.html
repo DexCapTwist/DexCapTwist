@@ -44,7 +44,7 @@
           <p class="eyebrow">Dexterous manipulation · synthetic assets · sim-to-real</p>
           <h1>Dex<span>Cap</span>Twist</h1>
           <p class="subtitle">Synthetic Asset Generation with Hybrid Primitive Control for Dexterous Screw-Cap Manipulation</p>
-          <p class="lead">A unified framework that pairs 4,015 simulation-ready articulated bottles with an explicit twist–reset controller for stable, long-horizon bimanual unscrewing.</p>
+          <p class="lead">A unified framework pairing 4,015 validated, simulation-ready articulated bottle assets with an explicit twist–reset controller for stable, long-horizon bimanual unscrewing.</p>
           <div class="button-row" aria-label="Project links">
             <a class="button primary" href="assets/paper/dexcaptwist-paper.pdf">Read the paper <span>↗</span></a>
             <a class="button" href="https://github.com/DexCapTwist/DexCapTwist">GitHub <span>↗</span></a>
@@ -75,7 +75,7 @@
             <p class="kicker">01 · Overview</p>
             <h2>One framework.<br>Two coupled problems.</h2>
           </div>
-          <p>Dexterous cap opening must generalize across container geometry while sustaining repeated contact-rich motion. DexCapTwist addresses both the missing training assets and the cyclic structure of unscrewing.</p>
+          <p>Dexterous cap opening must generalize across container geometry while sustaining repeated contact-rich motion. DexCapTwist addresses both the shortage of task-specific articulated assets and the cyclic structure of unscrewing.</p>
         </div>
         <figure class="paper-figure reveal">
           <img src="assets/images/overview.webp" alt="Overview of the DexTwistSet asset pipeline and CycleTwist controller">
@@ -85,17 +85,17 @@
           <article class="feature-card reveal">
             <span class="feature-number">01</span>
             <h3>Task-specific assets at scale</h3>
-            <p>Internet bottle images become paired body–cap contours, articulated URDF/USD assets, and validated bimanual grasps.</p>
+            <p>Internet bottle images become paired body–cap contours, articulated URDF/USD assets, and validated bimanual grasp initializations.</p>
           </article>
           <article class="feature-card reveal">
             <span class="feature-number">02</span>
             <h3>Explicit cyclic control</h3>
-            <p>A geometry-aware PPO policy generates cap rotation while a deterministic reset recovers a repeatable hand configuration.</p>
+            <p>A geometry-aware PPO twisting policy, deterministic reset primitive, and learned switching discriminator handle each phase explicitly.</p>
           </article>
           <article class="feature-card reveal">
             <span class="feature-number">03</span>
             <h3>Zero-shot physical transfer</h3>
-            <p>Policies trained only in Isaac Lab transfer to a dual-arm platform across 20 unseen everyday containers.</p>
+            <p>A policy trained only in Isaac Sim transfers to a dual-arm platform across 20 everyday containers without real-world fine-tuning.</p>
           </article>
         </div>
       </div>
@@ -106,17 +106,17 @@
         <div class="section-heading reveal">
           <p class="kicker">02 · DexTwistSet</p>
           <h2>From pixels to articulated assets.</h2>
-          <p>ContourVAE expands real bottle silhouettes in latent space. The decoded contours are converted into 3D bottles, assigned cap-body joints, and checked for reachable, stable bimanual initialization.</p>
+          <p>ContourVAE expands paired body–cap contours in latent space. Decoded contours become articulated 3D bottles with cap-body joints, randomized physical properties, and validated bimanual initialization.</p>
         </div>
         <figure class="paper-figure dark-figure reveal">
           <img src="assets/images/dataset-pipeline.webp" alt="DexTwistSet dataset construction pipeline">
           <figcaption>Pre-processing, ContourVAE synthesis, latent sampling, Blender asset generation, and Isaac Sim validation.</figcaption>
         </figure>
         <div class="pipeline" aria-label="Dataset construction steps">
-          <article class="reveal"><span>01</span><h3>Extract</h3><p>Grounded-SAM and geometric filtering recover aligned body and cap contours.</p></article>
-          <article class="reveal"><span>02</span><h3>Generate</h3><p>Original, interpolated, and randomly sampled contours cover a broad shape distribution.</p></article>
-          <article class="reveal"><span>03</span><h3>Build</h3><p>Blender creates circular, square, and rectangular articulated bottle meshes.</p></article>
-          <article class="reveal"><span>04</span><h3>Validate</h3><p>BODex initialization and Isaac Lab checks retain simulation-ready assets.</p></article>
+          <article class="reveal"><span>01</span><h3>Extract</h3><p>Grounded-SAM, contour processing, and geometric checks recover aligned body–cap pairs from web images.</p></article>
+          <article class="reveal"><span>02</span><h3>Generate</h3><p>ContourVAE produces original, interpolated, and Gaussian-sampled geometries in one continuous latent space.</p></article>
+          <article class="reveal"><span>03</span><h3>Build</h3><p>Blender creates circular, square, and rectangular meshes with revolute and prismatic cap-body joints.</p></article>
+          <article class="reveal"><span>04</span><h3>Validate</h3><p>BODex grasp synthesis and Isaac Lab checks retain assets with stable, reachable bimanual grasps.</p></article>
         </div>
         <figure class="gallery-figure reveal">
           <img src="assets/images/bottle-gallery.webp" alt="A gallery of synthetic bottles in DexTwistSet">
@@ -128,9 +128,9 @@
             <figcaption>t-SNE projection of the three contour subsets.</figcaption>
           </figure>
           <div class="number-stack reveal">
-            <div><strong>5,250</strong><span>original web contours</span></div>
-            <div><strong>2,625 + 2,625</strong><span>interpolated + random samples</span></div>
-            <div><strong>80 / 20</strong><span>training / testing split</span></div>
+            <div><strong>5,250</strong><span>valid original bottle contours</span></div>
+            <div><strong>2,625 + 2,625</strong><span>interpolation + random contour samples</span></div>
+            <div><strong>4,015</strong><span>validated assets; 80 / 20 train / test split</span></div>
           </div>
         </div>
       </div>
@@ -140,18 +140,18 @@
       <div class="container">
         <div class="section-heading split-heading reveal">
           <div><p class="kicker">03 · CycleTwist</p><h2>Twist. Detect.<br>Reset. Repeat.</h2></div>
-          <p>Instead of forcing one policy to learn incompatible contact and recovery behaviors, CycleTwist assigns them to specialized primitives and learns when to switch.</p>
+          <p>Instead of coupling contact-rich torque generation and hand recovery in one action distribution, CycleTwist assigns them to specialized primitives and learns when to switch.</p>
         </div>
         <figure class="paper-figure reveal">
           <img src="assets/images/cycletwist.webp" alt="CycleTwist architecture with twisting, switching, and reset modules">
           <figcaption>The hybrid controller combines a PPO twisting primitive, a DAgger-refined switching discriminator, and a deterministic reset primitive.</figcaption>
         </figure>
         <div class="cycle-flow reveal" aria-label="CycleTwist execution cycle">
-          <article><span class="node-label">Learned</span><strong>Twisting Primitive</strong><p>Geometry-aware actions maximize cap rotation and tangential fingertip force.</p></article>
+          <article><span class="node-label">PPO · Learned</span><strong>Twisting Primitive</strong><p>Proprioception, bottle geometry, and cap position guide contact-rich rotation with tangential-force shaping.</p></article>
           <span class="flow-arrow" aria-hidden="true">→</span>
-          <article><span class="node-label">DAgger</span><strong>Switching Discriminator</strong><p>Temporal gating detects stable twist completion from real-time observations.</p></article>
+          <article><span class="node-label">DAgger-refined</span><strong>Switching Discriminator</strong><p>Temporal gating detects stable twist completion and triggers reset after four consecutive positive predictions.</p></article>
           <span class="flow-arrow" aria-hidden="true">→</span>
-          <article><span class="node-label">Scripted</span><strong>Reset Primitive</strong><p>Stretch and pre-grasp stages restore the hand for the next rotation cycle.</p></article>
+          <article><span class="node-label">Deterministic</span><strong>Reset Primitive</strong><p>A Stretch–Pre-grasp kinematic sequence reduces interference and restores the hand for the next cycle.</p></article>
         </div>
       </div>
     </section>
@@ -161,7 +161,7 @@
         <div class="section-heading reveal">
           <p class="kicker">04 · Simulation Results</p>
           <h2>More rotation across every geometry group.</h2>
-          <p>All methods are evaluated for 200 steps on held-out Original, Interpolation, and Random subsets. CycleTwist achieves the strongest total rotation angle and twisting velocity throughout.</p>
+          <p>All methods are evaluated for 200 steps on held-out Original, Interpolation, and Random geometries. CycleTwist achieves the highest total rotation angle, effective rotation rate, and twisting velocity across all three subsets.</p>
         </div>
         <article class="module-video reveal" id="simulation-video">
           <div class="video-frame">
@@ -179,23 +179,27 @@
         </div>
         <div class="table-wrap reveal" role="region" aria-label="Simulation result table" tabindex="0">
           <table>
-            <thead><tr><th>Method</th><th>Original TRA</th><th>Interpolation TRA</th><th>Random TRA</th><th>Mean TRA</th></tr></thead>
+            <thead><tr><th>Method</th><th>Original<br>TRA / ERR / vel</th><th>Interpolation<br>TRA / ERR / vel</th><th>Random<br>TRA / ERR / vel</th></tr></thead>
             <tbody>
-              <tr><td>Monolithic PPO</td><td>163.5°</td><td>129.0°</td><td>159.3°</td><td>150.6°</td></tr>
-              <tr><td>TLO</td><td>103.2°</td><td>101.5°</td><td>114.7°</td><td>106.5°</td></tr>
-              <tr><td>DexAnyTwist</td><td>172.8°</td><td>158.6°</td><td>166.9°</td><td>166.1°</td></tr>
-              <tr class="best"><td><strong>CycleTwist</strong></td><td><strong>202.7°</strong></td><td><strong>210.1°</strong></td><td><strong>194.1°</strong></td><td><strong>202.3°</strong></td></tr>
+              <tr><td>Monolithic PPO</td><td>163.5° / 2.1% / 0.82</td><td>129.0° / 0.8% / 0.65</td><td>159.3° / 27.0% / 0.80</td></tr>
+              <tr><td>TLO</td><td>103.2° / 0.4% / 0.52</td><td>101.5° / 0.2% / 0.51</td><td>114.7° / 1.1% / 0.57</td></tr>
+              <tr><td>DexAnyTwist</td><td>172.8° / 34.0% / 0.86</td><td>158.6° / 15.2% / 0.79</td><td>166.9° / 31.5% / 0.83</td></tr>
+              <tr class="best"><td><strong>CycleTwist</strong></td><td><strong>202.7° / 95.2% / 1.01</strong></td><td><strong>210.1° / 97.2% / 1.05</strong></td><td><strong>194.1° / 69.0% / 0.97</strong></td></tr>
             </tbody>
           </table>
         </div>
+        <figure class="paper-figure reveal">
+          <img src="assets/images/simulation.webp" alt="Simulated DexTwistSet evaluation objects and representative grasp, twist, and pre-grasp trajectories">
+          <figcaption>Held-out evaluation objects from the Original, Interpolation, and Random subsets, with representative GRASP, TWIST, and PRE-GRASP stages.</figcaption>
+        </figure>
         <figure class="paper-figure reveal">
           <img src="assets/images/curves.webp" alt="Cap rotation curves for baselines and CycleTwist ablations">
           <figcaption>Signed cap-rotation trajectories across three asset categories; shaded regions indicate variation across three seeds.</figcaption>
         </figure>
         <div class="analysis-grid">
-          <article class="analysis-card reveal"><p class="kicker">Ablation</p><h3>Geometry matters</h3><p>Removing body height and cap contour inputs lowers TRA, ERR, and velocity across every split.</p></article>
-          <article class="analysis-card reveal"><p class="kicker">Ablation</p><h3>Force shaping matters</h3><p>Without tangential-force reward, fingertip slippage increases and rotation becomes less consistent.</p></article>
-          <article class="analysis-card accent reveal"><p class="kicker">Switching</p><h3>95.7% offline F1</h3><p>DAgger refinement raises online successful switching from 84.9% to 91.2%.</p></article>
+          <article class="analysis-card reveal"><p class="kicker">Ablation</p><h3>Geometry matters</h3><p>Removing body height and cap-contour inputs lowers TRA, ERR, and velocity on every geometry split.</p></article>
+          <article class="analysis-card reveal"><p class="kicker">Ablation</p><h3>Force shaping matters</h3><p>Without tangential-force reward, fingertip slippage increases and twisting velocity declines.</p></article>
+          <article class="analysis-card accent reveal"><p class="kicker">Switching</p><h3>95.7% offline F1</h3><p>DAgger-inspired on-policy refinement raises online successful switching from 84.9% to 91.2%.</p></article>
         </div>
       </div>
     </section>
@@ -217,7 +221,7 @@
         </article>
         <figure class="paper-figure dark-figure reveal">
           <img src="assets/images/real-world.webp" alt="Real-world containers, perception outputs, and robot executions">
-          <figcaption>Twenty objects across five categories, with RGB input, segmentation, contour recovery, and representative execution stages.</figcaption>
+          <figcaption>Twenty objects across five categories, with RGB input, segmentation, contour recovery, and representative GRASP, TWIST, and PRE-GRASP execution stages.</figcaption>
         </figure>
         <div class="category-bars reveal" aria-label="Success rate by container category">
           <div><span>Dry-storage</span><i><b style="width:90%"></b></i><strong>90.0%</strong></div>
